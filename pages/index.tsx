@@ -2,6 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+import * as Avatar from '@radix-ui/react-avatar'
+import classNames from 'clsx'
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -12,6 +15,21 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Avatar.Root className={classNames(
+          'w-14',
+          'h-14',
+          'rounded-full',
+          'inline-block',
+          'overflow-hidden',
+        )}> 
+            <Avatar.Image 
+              className={classNames(
+                'w-full',
+                'h-full',
+                'object-cover'
+              )}
+            src='https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'></Avatar.Image>
+        </Avatar.Root>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
