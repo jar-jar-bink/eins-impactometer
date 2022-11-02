@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .centered {
+    @apply flex justify-center items-center
+  }
+  .input {
+    @apply w-full font-normal text-gray-400 text-xl p-4 outline-none border-b-2 focus:border-b-blue-600 focus:border-b-2 transition-all
+  }
+}
+
 html,
 body {
   padding: 0;
