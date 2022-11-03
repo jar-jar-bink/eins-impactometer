@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { prisma } from '../../../lib/db'
+import prisma from '@/lib/db'
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const {method} = req
-
+  console.log(req.body , 'Body')
   switch(method) {
     case 'POST': {
       try {

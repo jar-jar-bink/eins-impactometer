@@ -1,22 +1,54 @@
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
+const LogIn = ({}) => (
+  <button
+    type="button"
+    className="rounded-xl bg-blue-600 py-4 px-8 uppercase transition-all hover:bg-blue-400"
+    onClick={() => signIn("credentials")}
+  >
+    Sign in with Email
+  </button>
+);
 
 export default function Login() {
+  const session = useSession();
+  const router = useRouter();
+
+  if (session.status === "authenticated") {
+    router.push("/");
+  }
+
   return (
-    <div className="h-screen centered">
-      <form className="w-[400px] text-white rounded-xl shadow-xl
-      flex flex-col gap-6 p-4">
+    <div className="centered h-screen">
+      <form
+        className="flex w-[400px] flex-col gap-6
+      rounded-xl p-4 text-white shadow-xl"
+      >
         <div className="">
           <label htmlFor="name"></label>
-          <input className="input" id="name" type="text"
-            placeholder="Your Name" />
+          <input
+            className="input"
+            id="name"
+            type="text"
+            placeholder="Your Name"
+          />
         </div>
         <div className="">
           <label htmlFor="email"></label>
-          <input className="input" id="email" type="email"
-            placeholder="Your E-mail" />
+          <input
+            className="input"
+            id="email"
+            type="email"
+            placeholder="Your E-mail"
+          />
         </div>
-        <button type="submit" className="bg-blue-600 py-4 px-8 transition-all hover:bg-blue-400 uppercase rounded-xl">Login</button>
+        <LogIn />
+        <button className="text-slate-600">
+          <Link href="register">Register</Link>
+        </button>
       </form>
     </div>
-  )
-} 
+  );
+}
